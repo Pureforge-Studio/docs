@@ -12,6 +12,7 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 | **2. Pure-Forge Markdown Tree Studio** | Confluence | Imports nested folders of `.md` (Markdown) files into Confluence **while preserving your exact parent-child page hierarchy** (instead of dumping files into a flat list), exports spaces back to a folder tree of `.md` files, and renders dark-mode PDF-ready code blocks. | **[Read the Markdown Tree Studio Guide](./MARKDOWN_TREE_GUIDE.md)** |
 | **3. Pure-Forge Bulk Label Governance** | Jira & Confluence | Lets Jira admins **merge duplicate labels, rename typos, color-tag, or delete obsolete labels across hundreds of Jira tickets in one click**—using safe 50-issue batches and an undo journal so big projects never time out or white-screen. | **[Read the Bulk Label Governance Guide](./LABEL_GOVERNANCE_GUIDE.md)** |
 | **4. Pure-Forge Inbound Webhook & Alert Router** | Jira & Confluence | Routes inbound JSON alerts (**PagerDuty, Datadog, Sentry, GitHub Actions**) into Jira issues and Confluence incident pages with **SHA-256 alert-storm deduplication** (so 80 duplicate alerts don't create 80 tickets), deterministic dot-path field extraction, and idempotent replay protection. | **[Read the Inbound Webhook Router Guide](./WEBHOOK_ROUTER_GUIDE.md)** |
+| **5. Pure-Forge Zero-Egress CSV & JSON Table Studio** | Confluence & Jira | Turns inline **CSV or JSON array datasets** into interactive, sortable, searchable data tables with **automatic numeric column totals (`SUM`, `AVG`, `COUNT`)** and **spreadsheet formula-injection protection (`=CMD`, `+powershell`)**—with zero external server egress. | **[Read the CSV & JSON Table Studio Guide](./CSV_JSON_TABLE_GUIDE.md)** |
 
 ---
 
@@ -28,6 +29,9 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 
 ### 4. Pure-Forge Inbound Webhook & Alert-to-Issue Router (`Jira` & `Confluence`)
 ![Pure-Forge Inbound Webhook & Alert-to-Issue Router](./assets/webhook_router_prod_clean.png)
+
+### 5. Pure-Forge Zero-Egress CSV & JSON Table Studio (`Confluence` & `Jira`)
+![Pure-Forge Zero-Egress CSV & JSON Table Studio](./assets/table_studio_prod_clean.png)
 
 ---
 
