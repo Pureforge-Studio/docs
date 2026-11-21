@@ -17,6 +17,8 @@ When teams try to bring those Markdown folders into Confluence—or render Markd
 
 **Pure-Forge Markdown Tree Studio solves all four problems inside a single zero-egress Confluence app.**
 
+![Pure-Forge Markdown Tree Studio UI](./assets/markdown_tree_prod_clean.png)
+
 ---
 
 ## 2. How Folder Trees Map to Confluence Pages

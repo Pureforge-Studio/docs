@@ -14,6 +14,19 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 
 ---
 
+## Visual Overview of Our 3 Applications
+
+### 1. Pure-Forge SVG Mermaid Studio (`Confluence` & `Jira`)
+![Pure-Forge SVG Mermaid Studio](./assets/mermaid_prod_clean.png)
+
+### 2. Pure-Forge Markdown Tree Studio (`Confluence`)
+![Pure-Forge Markdown Tree Studio](./assets/markdown_tree_prod_clean.png)
+
+### 3. Pure-Forge Bulk Label Governance (`Jira` & `Confluence`)
+![Pure-Forge Bulk Label Governance](./assets/label_governance_prod_clean.png)
+
+---
+
 ## Why IT & Security Admins Trust PureForge-Studio ("Runs on Atlassian")
 
 Many legacy Marketplace plugins send your Confluence pages, diagrams, or Jira tickets to third-party external servers to render or process them—creating security review bottlenecks and requiring external vendor accounts.

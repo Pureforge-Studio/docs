@@ -17,6 +17,8 @@ However, teams using Confluence and Jira routinely run into four frustrating pro
 
 **Pure-Forge SVG Mermaid Studio solves all four problems natively inside your Atlassian Cloud site.**
 
+![Pure-Forge SVG Mermaid Studio UI](./assets/mermaid_prod_clean.png)
+
 ---
 
 ## 2. How to Use It (3-Step Quickstart)

@@ -18,6 +18,8 @@ When project admins try to clean up these labels, they hit three major roadblock
 
 **Pure-Forge Bulk Label Governance gives Jira admins a safe, cursor-paginated dashboard to merge, rename, recolor, and delete labels at scale.**
 
+![Pure-Forge Bulk Label Governance UI](./assets/label_governance_prod_clean.png)
+
 ---
 
 ## 2. How to Use It (3-Step Quickstart)
