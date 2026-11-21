@@ -13,6 +13,8 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 | **3. Pure-Forge Bulk Label Governance** | Jira & Confluence | Lets Jira admins **merge duplicate labels, rename typos, color-tag, or delete obsolete labels across hundreds of Jira tickets in one click**—using safe 50-issue batches and an undo journal so big projects never time out or white-screen. | **[Read the Bulk Label Governance Guide](./LABEL_GOVERNANCE_GUIDE.md)** |
 | **4. Pure-Forge Inbound Webhook & Alert Router** | Jira & Confluence | Routes inbound JSON alerts (**PagerDuty, Datadog, Sentry, GitHub Actions**) into Jira issues and Confluence incident pages with **SHA-256 alert-storm deduplication** (so 80 duplicate alerts don't create 80 tickets), deterministic dot-path field extraction, and idempotent replay protection. | **[Read the Inbound Webhook Router Guide](./WEBHOOK_ROUTER_GUIDE.md)** |
 | **5. Pure-Forge Zero-Egress CSV & JSON Table Studio** | Confluence & Jira | Turns inline **CSV or JSON array datasets** into interactive, sortable, searchable data tables with **automatic numeric column totals (`SUM`, `AVG`, `COUNT`)** and **spreadsheet formula-injection protection (`=CMD`, `+powershell`)**—with zero external server egress. | **[Read the CSV & JSON Table Studio Guide](./CSV_JSON_TABLE_GUIDE.md)** |
+| **6. Pure-Forge Space Glossary & Acronym Dictionary** | Confluence & Jira | Indexes space-wide **engineering, security, and product terminology into an interactive A–Z dictionary** with taxonomy category filtering and an automatic **Acronym & Canonical Term Collision Guard** so teams never publish conflicting definitions. | **[Read the Space Glossary Guide](./GLOSSARY_STUDIO_GUIDE.md)** |
+| **7. Pure-Forge Inactive User & License Seat Optimizer** | Jira & Confluence | Audits **dormant Jira and Confluence license seats** (`>= 90` days inactive), calculates **monthly & annual FinOps savings**, automatically excludes **protected admin/bot service accounts**, and enforces a **14-day safety floor** with zero PII egress. | **[Read the License Seat Optimizer Guide](./INACTIVE_SEAT_AUDITOR_GUIDE.md)** |
 
 ---
 
@@ -32,6 +34,12 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 
 ### 5. Pure-Forge Zero-Egress CSV & JSON Table Studio (`Confluence` & `Jira`)
 ![Pure-Forge Zero-Egress CSV & JSON Table Studio](./assets/table_studio_prod_clean.png)
+
+### 6. Pure-Forge Space Glossary & Acronym Dictionary (`Confluence` & `Jira`)
+![Pure-Forge Space Glossary & Acronym Dictionary](./assets/glossary_studio_prod_clean.png)
+
+### 7. Pure-Forge Inactive User & License Seat Optimizer (`Jira` & `Confluence`)
+![Pure-Forge Inactive User & License Seat Optimizer](./assets/seat_auditor_prod_clean.png)
 
 ---
 
