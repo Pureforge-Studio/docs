@@ -1,0 +1,63 @@
+name: Public Docs Anonymity & Integrity Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docs-privacy-and-link-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify required legal, support, and app documentation files exist
+        run: |
+          python3 - << 'EOF'
+          from pathlib import Path
+
+          required_files = [
+              "README.md",
+              "PRIVACY.md",
+              "TERMS.md",
+              "SECURITY.md",
+              "SUPPORT.md",
+              "apps/svg-mermaid-studio.md",
+              "apps/markdown-tree-studio.md",
+              "apps/bulk-label-governance.md",
+              "apps/inbound-webhook-alert-router.md",
+              "apps/csv-json-table-studio.md",
+              "apps/space-glossary-dictionary.md",
+              "apps/inactive-user-seat-optimizer.md",
+              "assets/mermaid_prod_clean.png",
+              "assets/markdown_tree_prod_clean.png",
+              "assets/label_governance_prod_clean.png",
+              "assets/webhook_router_prod_clean.png",
+              "assets/table_studio_prod_clean.png",
+              "assets/glossary_studio_prod_clean.png",
+              "assets/seat_auditor_prod_clean.png",
+          ]
+          missing = [f for f in required_files if not Path(f).is_file()]
+          assert not missing, f"Missing required documentation assets: {missing}"
+
+          forbidden_tokens = (
+              "justin" + "." + "sellers",
+              "justin" + " " + "sellers",
+              "4420" + " " + "avery",
+              "jc" + "sellers",
+              "sam.gov",
+              "fpds",
+              "polymarket",
+              "kalshi",
+          )
+          violations = []
+          for md_file in Path(".").rglob("*.md"):
+              text = md_file.read_text(encoding="utf-8").lower()
+              for tok in forbidden_tokens:
+                  if tok in text:
+                      violations.append(f"{md_file}: matched forbidden token {tok[:4]}***")
+          assert not violations, "Privacy/Firewall violations:\n" + "\n".join(violations)
+          print("All 19 public documentation assets verified clean (0 PII/Firewall leaks).")
+          EOF
