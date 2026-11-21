@@ -11,10 +11,11 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 | **1. Pure-Forge SVG Mermaid Studio** | Confluence & Jira | Turns text-based Mermaid flowcharts and architecture diagrams into **razor-sharp, zoomable vector SVG diagrams** (never blurry PNG images), with full-screen pan/zoom, automatic Dark Mode, 4x Hi-DPI PDF export, and automatic detection of existing page code blocks. | **[Read the Mermaid Studio Guide](./MERMAID_STUDIO_GUIDE.md)** |
 | **2. Pure-Forge Markdown Tree Studio** | Confluence | Imports nested folders of `.md` (Markdown) files into Confluence **while preserving your exact parent-child page hierarchy** (instead of dumping files into a flat list), exports spaces back to a folder tree of `.md` files, and renders dark-mode PDF-ready code blocks. | **[Read the Markdown Tree Studio Guide](./MARKDOWN_TREE_GUIDE.md)** |
 | **3. Pure-Forge Bulk Label Governance** | Jira & Confluence | Lets Jira admins **merge duplicate labels, rename typos, color-tag, or delete obsolete labels across hundreds of Jira tickets in one click**—using safe 50-issue batches and an undo journal so big projects never time out or white-screen. | **[Read the Bulk Label Governance Guide](./LABEL_GOVERNANCE_GUIDE.md)** |
+| **4. Pure-Forge Inbound Webhook & Alert Router** | Jira & Confluence | Routes inbound JSON alerts (**PagerDuty, Datadog, Sentry, GitHub Actions**) into Jira issues and Confluence incident pages with **SHA-256 alert-storm deduplication** (so 80 duplicate alerts don't create 80 tickets), deterministic dot-path field extraction, and idempotent replay protection. | **[Read the Inbound Webhook Router Guide](./WEBHOOK_ROUTER_GUIDE.md)** |
 
 ---
 
-## Visual Overview of Our 3 Applications
+## Visual Overview of Our Applications
 
 ### 1. Pure-Forge SVG Mermaid Studio (`Confluence` & `Jira`)
 ![Pure-Forge SVG Mermaid Studio](./assets/mermaid_prod_clean.png)
@@ -24,6 +25,9 @@ Welcome to the official customer documentation hub for **PureForge-Studio**. We 
 
 ### 3. Pure-Forge Bulk Label Governance (`Jira` & `Confluence`)
 ![Pure-Forge Bulk Label Governance](./assets/label_governance_prod_clean.png)
+
+### 4. Pure-Forge Inbound Webhook & Alert-to-Issue Router (`Jira` & `Confluence`)
+![Pure-Forge Inbound Webhook & Alert-to-Issue Router](./assets/webhook_router_prod_clean.png)
 
 ---
 
