@@ -1,37 +1,40 @@
-# Customer Support & Service Level Agreement (SLA) — PureForge-Studio
+# Support — PureForge-Studio
 
-Welcome to the official customer support portal for **PureForge-Studio** Atlassian Cloud applications:
+## How to reach us
 
-1. **[Pure-Forge SVG Mermaid Studio](./MERMAID_STUDIO_GUIDE.md)** (`Confluence` & `Jira`)
-2. **[Pure-Forge Markdown Tree Studio](./MARKDOWN_TREE_GUIDE.md)** (`Confluence`)
-3. **[Pure-Forge Bulk Label Governance](./LABEL_GOVERNANCE_GUIDE.md)** (`Jira` & `Confluence`)
-4. **[Pure-Forge Inbound Webhook & Alert Router](./WEBHOOK_ROUTER_GUIDE.md)** (`Jira` & `Confluence`)
-5. **[Pure-Forge Zero-Egress CSV & JSON Table Studio](./CSV_JSON_TABLE_GUIDE.md)** (`Confluence` & `Jira`)
-6. **[Pure-Forge Space Glossary & Acronym Dictionary](./GLOSSARY_STUDIO_GUIDE.md)** (`Confluence` & `Jira`)
-7. **[Pure-Forge Inactive User & License Seat Optimizer](./INACTIVE_SEAT_AUDITOR_GUIDE.md)** (`Jira` & `Confluence`)
+- **Open an issue:** https://github.com/Pureforge-Studio/docs/issues. A bot replies straight away with a link to the right guide; a person follows up as shown below.
+- **Email:** `uo7vhd510@mozmail.com`. For security issues, see the [Security Policy](./SECURITY.md).
+- **Hours:** Monday to Friday, US Eastern Time, excluding US public holidays.
 
----
+## Response targets
 
-## 1. Support Channels & Operating Schedule
-- **Primary Support Ticket & Bug Tracker (Instant Automated Triage):** Open an issue on our **[GitHub Support Tracker](https://github.com/Pureforge-Studio/docs/issues)** (automated triage and self-service diagnostics respond immediately 24/7; engineer review follows per the SLA table below).
-- **Support & Security Email:** `uo7vhd510@mozmail.com`
-- **Support Operating Days & Window:** **Monday – Friday (US Eastern Time / ET, UTC-5 / UTC-4)**, excluding observed US Federal Holidays.
+These are targets, not a guaranteed service level.
 
----
+| Severity | Examples | First reply from a person |
+| --- | --- | --- |
+| Critical | The app shows a red error for everyone, or you suspect a security problem. | Within 2 business days |
+| Major | A main feature fails: export, import, a label run, or webhook issue creation. | Within 3 business days |
+| General | Questions, documentation, feature requests. | Within 5 business days |
 
-## 2. Response Time Targets (Standard Support SLA)
+## What to include
 
-| Severity Level | Definition | Automated Triage (GitHub Issues) | Engineer Response Target | Resolution / Follow-Up Target |
-| :--- | :--- | :---: | :---: | :--- |
-| **Severity 1 (Critical / Security)** | Application fails to load (`Red Fault Banner`) across all users in production or suspected security vulnerability. | **Immediate (< 5 Minutes)** | **Within 2 Business Days (48 Hours)** | Verified fix deployed via Atlassian Forge production channel as top backlog priority. |
-| **Severity 2 (Major Functional)** | A core feature (e.g., SVG export, Markdown import, label batch execution, or CSV export) returns an unexpected error. | **Immediate (< 5 Minutes)** | **Within 2–3 Business Days** | Workaround or patch scheduled in the next maintenance release. |
-| **Severity 3 (General / Enhancement)** | General usage questions, documentation clarifications, or feature requests (`Amber Refusal` guidance). | **Immediate (< 5 Minutes)** | **Within 3–5 Business Days** | Triaged into product backlog for upcoming minor releases. |
+1. The app, and whether you use it in Confluence or Jira.
+2. What you did and what happened. Copy the exact text of any amber or red banner.
+3. Roughly when it happened, and whether it happens every time.
 
----
+Please don't include passwords, tokens (including your Webhook Router token), or confidential company data.
 
-## 3. Information to Include in a Support Request
-To help us resolve your question as quickly as possible, please include:
-1. Which **PureForge-Studio** application and version you are using.
-2. Whether the issue occurs in **Confluence Cloud** or **Jira Cloud**.
-3. The status banner message shown at the top of the app (*Amber Refusal Diagnostic* or *Red Fault Code*), if applicable.
-   *(Never include sensitive company data, Personal Data, or credentials in a support ticket.)*
+## Amber and red banners
+
+- **Amber** means the app stopped on purpose: a limit was reached, a confirmation is needed, you lack permission, or the licence is inactive. The message says what to change.
+- **Red** means something unexpected failed. Reload once; if it keeps happening, open an issue with the message text.
+
+## App guides
+
+- [Mermaid Studio](./MERMAID_STUDIO_GUIDE.md)
+- [Markdown Tree Studio](./MARKDOWN_TREE_GUIDE.md)
+- [Label Governance](./LABEL_GOVERNANCE_GUIDE.md)
+- [Webhook Router](./WEBHOOK_ROUTER_GUIDE.md)
+- [JSON/CSV Table Studio](./CSV_JSON_TABLE_GUIDE.md)
+- [Glossary & Taxonomy Studio](./GLOSSARY_STUDIO_GUIDE.md)
+- [License Seat Optimizer](./INACTIVE_SEAT_AUDITOR_GUIDE.md)

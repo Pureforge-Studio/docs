@@ -1,22 +1,29 @@
-# Security & Vulnerability Disclosure Policy — PureForge-Studio
+# Security Policy — PureForge-Studio
 
-**Vendor:** PureForge-Studio  
-**Security Contact:** `uo7vhd510@mozmail.com`  
-**Privacy & Scope Justification Policy:** [PRIVACY.md](./PRIVACY.md)
+**Security contact:** `uo7vhd510@mozmail.com` (put `[SECURITY]` in the subject line)
+**Privacy:** [PRIVACY.md](./PRIVACY.md)
 
-## 1. "Runs on Atlassian" Zero-Egress Guarantee
-All seven **PureForge-Studio** applications run 100% natively on Atlassian Forge (`nodejs24.x`) with:
-- **Zero outbound network egress** (`permissions.external` omitted on every app).
-- **Zero external servers or third-party databases** (all state stored exclusively inside the customer's encrypted Atlassian Forge `storage:app` partition).
-- **Zero external CDN assets** (all CSS, SVG, and JavaScript assets are bundled locally inside the Forge Custom UI static resource).
+## How the apps are built
 
-## 2. Automated DevSecOps & Quality Gates
-Every commit across the PureForge-Studio monorepo is gated by:
-- **Static Application Security Testing (SAST):** Ruff Bandit (`S`), blind-exception bans (`BLE`), Pyright strict type checking, and AST/regex bans on `eval()`, `new Function()`, `XMLHttpRequest`, and external `fetch("http...")`.
-- **Software Composition Analysis (SCA):** Weekly scheduled `pip-audit` against locked dependencies, `bandit -ll` security scans, and `detect-secrets` full-tree entropy scanning.
-- **Curated Throwaway-Tree Mutation Probes:** 12 automated Python and Node 24 mutation probes verifying zero-egress manifest auditing, Marketplace license enforcement, XSS/SVG entity escaping, CSV formula injection blocking (`=CMD`, `+powershell`), and destructive-operation confirmation guards.
+- **Runs on Atlassian.** All seven apps run on Atlassian Forge (`nodejs24.x`). They declare no outbound network access, so Forge blocks any call to an outside server.
+- **Data stays in your site.** App data lives only in Forge hosted storage on the site where the app is installed. We run no servers or databases of our own.
+- **No outside scripts.** Every script, style and library, including the bundled Mermaid renderer, ships inside the app. Nothing is loaded from a CDN.
+- **Least privilege.** Each app requests only the scopes listed in the [Privacy Policy](./PRIVACY.md), and acts with the current user's permissions wherever a user is present.
+- **Safe rendering.** User text is escaped before display. Diagrams render with Mermaid's strict security level. CSV exports block spreadsheet formulas.
 
-## 3. Reporting a Vulnerability
-If you believe you have discovered a security vulnerability in any **PureForge-Studio** application:
-1. Email **`uo7vhd510@mozmail.com`** with `[SECURITY]` in the subject line (or open a ticket on https://github.com/Pureforge-Studio/docs/issues without public exploit details).
-2. We acknowledge receipt within **2 business days (48 hours)** and deploy verified security patches to the Atlassian Forge `production` environment in accordance with the Atlassian Marketplace Security Bug Fix Policy.
+## How we test
+
+Every change to the app code is checked before release:
+
+- Static analysis: Ruff with the Bandit security rules, strict type checking, and checks that ban `eval`, `new Function`, `XMLHttpRequest` and outbound `fetch` calls.
+- Secret scanning with detect-secrets on every change, plus a full scan every week.
+- A weekly dependency audit with pip-audit and Bandit.
+- Mutation tests that deliberately break key safety checks — zero-egress manifests, licence enforcement, output escaping, formula blocking and delete confirmations — to prove the tests catch them.
+
+## Reporting a vulnerability
+
+1. Email `uo7vhd510@mozmail.com` with `[SECURITY]` in the subject. Include the app, the steps to reproduce and the impact. Please don't open a public issue with exploit details.
+2. We acknowledge reports within 2 business days.
+3. We fix confirmed issues following the [Atlassian Marketplace Security Bug Fix Policy](https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/), and tell you when the fix is released.
+
+Please test only on your own Atlassian site, and don't access or change other people's data.

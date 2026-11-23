@@ -1,63 +1,89 @@
-# User Guide: Pure-Forge Markdown Tree Studio (Confluence)
+# Markdown Tree Studio — User Guide
 
-**Marketplace App Key:** `studio.pureforge.markdown-tree-studio`  
-**Security Architecture:** 100% Zero-Egress Atlassian Forge (**"Runs on Atlassian"**)
+**Works in:** Confluence (page macro, and a space page for import and export)
+**Runs on Atlassian:** yes. Files are read in your browser and pages are created through Confluence's own API.
 
----
+Markdown Tree Studio does three things:
 
-## 1. What Problem Does This App Solve?
+- **Import** a folder of Markdown files as Confluence pages, keeping the folder structure as the page tree.
+- **Export** a Confluence page and everything under it as a `.zip` of Markdown files.
+- **Show live Markdown** on any page with the Markdown macro.
 
-Engineering, DevOps, and product teams frequently write documentation in **Markdown (`.md`)** files organized inside nested directories (such as a Git repository's `docs/` folder).
-
-When teams try to bring those Markdown folders into Confluence—or render Markdown directly on Confluence pages—existing plugins fail in four common ways:
-1. **Flattening Nested Folders:** Older Markdown importers take a neatly organized folder tree (`docs/architecture/security/zero-egress.md`) and dump every file into a single flat, unorganized list of pages.
-2. **Crashing on Image Links:** Standard Markdown image tags (`![Diagram](./arch.svg)`) cause several legacy Confluence Markdown editors to stop rendering completely.
-3. **Broken Dark Mode & Missing PDF Code Blocks:** Older Markdown/Code macros don't adapt to Confluence Dark Mode and disappear when a page is exported to PDF or Word.
-4. **No Whole-Space Markdown Export:** Exporting an entire Confluence page tree back out into a clean folder structure of `.md` files often fails on multi-level spaces.
-
-**Pure-Forge Markdown Tree Studio solves all four problems inside a single zero-egress Confluence app.**
-
-![Pure-Forge Markdown Tree Studio UI](./assets/markdown_tree_prod_clean.png)
+![Markdown Tree Studio](./assets/markdown_tree_prod_clean.png)
 
 ---
 
-## 2. How Folder Trees Map to Confluence Pages
+## Import a folder of Markdown files
 
-When you import a nested folder of Markdown files, **Pure-Forge Markdown Tree Studio** plans your Confluence page creation in **Parent-First Topological Order** (`Depth 0` $\rightarrow$ `Depth 1` $\rightarrow$ `Depth 2`):
+1. In the space, open **Markdown Import & Export** from the space sidebar.
+2. Click **Choose folder…** (or **Choose .md files…**).
+3. Pick the parent page with **Change…**. The default is the space homepage.
+4. Choose what happens if a page title already exists in the space:
+   - **Skip existing pages**: keep the existing page and put any child pages under it.
+   - **Add a number suffix**: create "Title (2)", "Title (3)" and so on.
+   - Otherwise the import pauses and asks you.
+5. Click **Preview page tree** and check the result.
+6. Click **Create pages in Confluence**.
+
+**How files become pages:**
 
 ```text
-Your Markdown Folder Tree                  Created Confluence Page Hierarchy
-─────────────────────────                  ─────────────────────────────────
-docs/
-├── index.md                         ───►  [Depth 0] Engineering Handbook (Space Root)
-└── architecture/
-    ├── index.md                     ───►    └── [Depth 1] Architecture (Child of Engineering Handbook)
-    ├── zero-egress.md               ───►          ├── [Depth 2] Zero Egress Guide (Child of Architecture)
-    └── pdf-export.md                ───►          └── [Depth 2] PDF Export Spec (Child of Architecture)
+docs/                         Confluence
+├── index.md          ──►     Docs (parent page)
+├── setup.md          ──►     ├── Setup
+└── guides/                   └── Guides
+    ├── README.md     ──►         (content of Guides)
+    └── deploy.md     ──►         └── Deploy
 ```
 
-- **`index.md` / `README.md` Automatic Root Resolution:** Any `index.md` or `README.md` inside a subfolder becomes the parent Confluence page for that folder, and all sibling `.md` files in that folder are created underneath it as child pages.
-- **H1 Heading Title Extraction:** Page titles are automatically extracted from each file's top `# Heading` (or humanized from the filename if no `# Heading` is present).
+- Each sub-folder becomes a parent page. Its `index.md` or `README.md`, if there is one, becomes that page's content.
+- A page's title is the file's first heading, or the file name if there is no heading.
+- Existing pages are never overwritten.
 
----
+**Large imports** run in chunks. If you close the tab, reopen the space page and click **Continue import** to finish where it stopped, with no duplicates.
 
-## 3. How to Use It (3-Step Quickstart)
+## Export pages as Markdown
 
-### Step 1: Open the Studio Macro on a Confluence Page
-1. Edit a Confluence page where you want to preview or manage Markdown content.
-2. Type **`/markdown-tree`** and select **Pure-Forge Bi-Directional Markdown Tree Importer, Exporter & Live Macro**.
+1. On the same space page, under **Export pages as Markdown (.zip)**, click **Change…** and choose the top page.
+2. Click **Export .zip**.
 
-### Step 2: Review the Parent-First Page Tree Plan
-- Look at the **Hierarchical Folder-to-Page Tree Planner** on the left pane.
-- Each planned page shows its **Depth level (`[Depth 0]`, `[Depth 1]`, `[Depth 2]`)**, its resolved parent page, and the count of detected **Code Blocks** and **Image Links**.
-- **Pre-Flight Sibling Collision Guard (Amber Banner):** Confluence does not allow two pages under the same parent to have identical titles. Before touching your space, our planner checks for duplicate titles and highlights any collision in a calm **Amber Banner** so you can rename the file before importing.
+The `.zip` mirrors the page tree. A page with children becomes a folder with an `index.md`, for example `Root/index.md` and `Root/Section/Leaf.md`.
 
-### Step 3: Preview Dark/Light Code Blocks or Export the Space
-- The right pane renders your Markdown content and syntax-highlighted code blocks with automatic **Dark Mode** and **Confluence PDF/Word export** compatibility.
-- Click **Export Whole Space (.ZIP Tree)** to export a Confluence page hierarchy back into a clean folder tree of `.md` files with YAML frontmatter (`title`, `page_key`, `parent_key`).
+## Live Markdown macro
 
----
+Edit a page, type `/`, and choose **Pure-Forge Bi-Directional Markdown Tree Importer, Exporter & Live Macro**. Click **Edit Markdown**, write or paste Markdown, then **Save**. Headings, lists, task lists, tables, links, code blocks (readable in dark mode) and images are supported. Each macro keeps its own content.
 
-## 4. Security & Path-Traversal Protection
+## What converts, and how
 
-- **Fail-Closed Path & Image Guard:** Any Markdown bundle entry attempting relative path traversal (`../`) or containing an executable `javascript:` image/link URI is immediately blocked by the **Red Security Fault Guard** before any Confluence API call is made.
+| Markdown | In Confluence |
+| --- | --- |
+| Headings, lists, task lists, tables, quotes, code blocks | Native Confluence formatting |
+| Links | `http`, `https` and `mailto` links only; others become plain text |
+| Images | `https` images display; `http` images become links; relative paths such as `./img.png` become plain text, because the image files are not uploaded |
+| Raw HTML | Shown as text, never run |
+
+## Limits
+
+| Limit | Value |
+| --- | --- |
+| Files per import | 1,000 |
+| Total size per import | 2 MB |
+| Pages created per import | 300 |
+| Pages per export | 500 |
+| Macro content | 100,000 characters |
+
+## Permissions
+
+| Scope | Why |
+| --- | --- |
+| `storage:app` | Save macro content and the progress of imports and exports. |
+| `read:space:confluence`, `read:page:confluence` | List a space's pages for the page picker, and read the pages you export. |
+| `write:page:confluence` | Create the pages you import. |
+
+You can only import into spaces where you can create pages, because the app acts with your Confluence permissions.
+
+## FAQ
+
+**Are my files uploaded anywhere?** No. They are read in your browser and sent only to Confluence, as new pages.
+
+**What happens if the licence lapses?** Macro content still displays. Importing, exporting and saving need an active licence or trial.

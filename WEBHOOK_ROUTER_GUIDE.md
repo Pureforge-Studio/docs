@@ -1,46 +1,86 @@
-# Pure-Forge Inbound Webhook & Alert-to-Issue Router (`Jira` & `Confluence`)
+# Webhook Router — User Guide
 
-![Pure-Forge Inbound Webhook & Alert-to-Issue Router](./assets/webhook_router_prod_clean.png)
+**Works in:** Jira (admin page, plus an inbound webhook address)
+**Runs on Atlassian:** yes. The webhook address is a Forge web trigger, and issues are created through Jira's own API.
 
-## 1. What Problem Does This App Solve?
+Webhook Router gives you a secret webhook address. Any tool that can send JSON over HTTPS — monitoring, CI, alerting or your own scripts — can post to it, and each event becomes a Jira issue. Repeats of the same alert are skipped instead of filling your backlog.
 
-When production monitoring tools (**PagerDuty, Datadog, Sentry, GitHub Actions, or custom webhook emitters**) fire an alert storm, engineering teams using standard Jira or Confluence webhook integrations run into three painful failures:
-1. **Alert Storms Flood Your Jira Backlog:** A 5-minute database replica lag spike can fire 80+ identical webhook notifications, creating 80 duplicate Jira tickets that overwhelm your on-call engineer.
-2. **Brittle JSON Field Mapping & "Entity Not Found" Errors:** Legacy webhook plugins fail when extracting nested JSON properties (such as `alert.title`, `alert.severity`, or `alert.service`) or fail with `"Entity not found"` when saving routing rules.
-3. **External Webhook Relay Security Risks:** Many third-party webhook connectors route your incident payloads through external vendor servers outside Atlassian Cloud.
-
-**Pure-Forge Inbound Webhook & Alert-to-Issue Router** runs **100% inside Atlassian Forge with zero external data egress** (**"Runs on Atlassian"**). It validates inbound JSON payloads, extracts nested fields via deterministic dot-paths, coalesces duplicate alert-storm deliveries via SHA-256 fingerprinting, and routes unique alerts into atomic Jira issue or Confluence incident batches with an idempotent replay journal.
+![Webhook Router](./assets/webhook_router_prod_clean.png)
 
 ---
 
-## 2. Key Capabilities at a Glance
+## Set it up
 
-- **SHA-256 Alert-Storm Deduplication & Coalescing:** Automatically groups identical alerts sharing the same target project, source system, service name, and summary into a single Jira issue while recording the exact coalesced occurrence count (e.g., `16x coalesced`).
-- **Deterministic Dot-Path JSON Field Mapper (`No eval()`):** Map any nested JSON property (such as `alert.title`, `alert.severity`, `alert.service`) directly to Jira issue fields without writing custom scripts or exposing regex/eval vulnerabilities.
-- **Built-In Presets for PagerDuty, Datadog, Sentry & GitHub Actions:** Test and preview your routing rules immediately against realistic multi-event alert storms before enabling live routing.
-- **Idempotent Dead-Letter Replay Safety Guard:** Replaying historical webhook batches requires explicit `confirm_replay=True` verification (`Amber Refusal` guard) so operators never trigger accidental duplicate ticket floods.
-- **Fail-Closed XSS & Prototype Pollution Protection:** Any inbound webhook containing `<script>` tags, inline event handlers, or `__proto__` / `constructor.prototype` tokens is immediately blocked (`Red Fault` guard) before touching Jira or Confluence REST APIs.
+1. Go to **Jira settings → Apps → Webhook Router**.
+2. Under **Settings**:
+   - **Jira project key** (for example `OPS`), then **Find issue types** and pick the **Issue type to create**.
+   - **Summary field**: the dot path to the issue summary in your JSON, for example `alert.title`. Required.
+   - **Severity field**, **Service field**: optional dot paths, added to the issue description.
+   - **Dedupe key field**: optional, for example `alert.id`. Events with the same value inside the **Dedupe window** become one issue.
+   - **Severity → Jira priority**: one mapping per line, for example `critical = Highest`.
+   - **Labels to add**: comma separated.
+3. Click **Save settings**.
+4. Under **Try a payload**, click **Load example** and **Preview mapping** to check the result, then **Send test event** to create a real test issue.
+5. Copy the **Webhook address** into your sending tool.
 
----
+## Send events
 
-## 3. Step-by-Step Quickstart Guide
+Use either form:
 
-### Step 1: Open the Router in Jira or Confluence
-- **In Jira:** Open any Jira issue and click the **Pure-Forge Inbound Webhook & Alert-to-Issue Router** panel beneath the issue summary.
-- **In Confluence:** Type `/Pure-Forge Inbound Webhook` on any incident or runbook page to insert the live routing studio macro.
+```bash
+# Token in the address (simplest)
+curl -X POST "https://<your-webhook-address>?token=<token>" \
+  -H 'Content-Type: application/json' \
+  -d '{"alert":{"title":"Disk full on db-1","severity":"critical","id":"inc-1"}}'
 
-### Step 2: Configure Your Target Project & JSON Dot-Paths
-1. Enter your **Target Jira Project Key** (for example, `OPS` or `PLAT`) and **Target Issue Type** (such as `Incident` or `Bug`).
-2. Set the **Summary Dot-Path** (`alert.title`), **Severity Dot-Path** (`alert.severity`), and **Service Dot-Path** (`alert.service`) matching your inbound JSON structure.
+# Token in a header
+curl -X POST "https://<your-webhook-address>" \
+  -H 'Authorization: Bearer <token>' -H 'Content-Type: application/json' \
+  -d '{"alert":{"title":"Disk full on db-1","severity":"critical","id":"inc-1"}}'
+```
 
-### Step 3: Preview & Coalesce Inbound Alert Batches
-1. Select a preset (**PagerDuty Alert Storm**, **Datadog APM Latency**, **Sentry Unhandled Exception**, or **GitHub Actions Failure**) or paste a custom JSON array of webhook deliveries into the **Live Inbound Webhook JSON Batch Inspector**.
-2. Click **Route & Coalesce Webhook Batch**.
-3. Review the **SHA-256 Fingerprint**, **Extracted Summary**, **Storm Dedup Count**, and **Replay Journal ID** (`whj-...`) for each atomic 25-issue batch.
+Send one JSON object, or an array of up to 50 objects to create several issues at once.
 
----
+## What the sender gets back
 
-## 4. Security, Privacy & Support
+| HTTP status | Meaning |
+| --- | --- |
+| 202 | Accepted: issues were created. |
+| 200 | Duplicate: already seen inside the dedupe window, so no new issue. |
+| 400 | Invalid: not POST, not JSON, too large, or missing the summary field. |
+| 401 | Missing or wrong token. |
+| 402 | No active licence or trial. |
+| 503 | The router has not been configured yet. |
+| 500 | Something unexpected failed; the sender should retry. |
 
-- **Runs on Atlassian (Zero External Egress):** All payload parsing, SHA-256 fingerprinting, and replay journaling execute inside Atlassian's managed Node 24 Forge runtime and Forge app storage.
-- **Need Help?** Visit our **[Support & SLA Page](./SUPPORT.md)** or open an issue on **[GitHub Issues](https://github.com/Pureforge-Studio/docs/issues)**.
+**Recent deliveries** on the admin page shows the last 50 results with the time, outcome, issue key and a short reason.
+
+## Duplicates
+
+With a **Dedupe key field**, events that share the same value in the same project count as one alert for the dedupe window (default 60 minutes, at most 7 days). Without one, events with the same project, service and summary count as the same alert. Test events never suppress real ones.
+
+## Security
+
+- Every request needs the secret token. **Regenerate token** immediately invalidates the old address.
+- Bodies over 256 KB, or with more than 50 events, are refused.
+- Payload values are treated as plain text. Keys such as `__proto__` are ignored, and nothing in a payload can run code in Jira or in the app.
+
+## What ends up in the issue
+
+The summary comes from your summary field. The description lists severity and service, plus the original payload as a JSON code block of up to 20,000 characters. Anyone who can see the issue can see that content, so don't send secrets in webhook bodies.
+
+## Permissions
+
+| Scope | Why |
+| --- | --- |
+| `storage:app` | Keep the settings, the token, the delivery log and expiring duplicate checks. |
+| `read:jira-work` | Check the project and list its issue types. |
+| `write:jira-work` | Create issues from accepted events. |
+
+Issues are created by the app itself, because no Jira user is present when a webhook arrives.
+
+## FAQ
+
+**Can it create Confluence pages?** No. It creates Jira issues only.
+
+**Does the payload pass through your servers?** No. The webhook address is hosted by Atlassian Forge, and the app has no outbound network access.

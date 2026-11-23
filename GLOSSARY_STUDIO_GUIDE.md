@@ -1,36 +1,69 @@
-# Pure-Forge Space Glossary & Acronym Dictionary (`Confluence` & `Jira`)
+# Glossary & Taxonomy Studio — User Guide
 
-![Pure-Forge Space Glossary & Acronym Dictionary](./assets/glossary_studio_prod_clean.png)
+**Works in:** Confluence (macro) and Jira (issue panel)
+**Runs on Atlassian:** yes. The glossary is saved in Forge storage on your own site.
 
-## 1. What Problem Does This App Solve?
+Glossary Studio keeps one shared A–Z glossary of terms and acronyms for each Confluence space and each Jira project. It refuses duplicate terms and clashing acronyms, so two teams can't publish different meanings for the same acronym.
 
-As engineering, security, and product organizations scale, new hires and cross-functional teams struggle with hundreds of internal acronyms (`ADF`, `CSP`, `CMEK`, `SLO`, `FUE`) scattered across disconnected Confluence pages. Legacy Marketplace glossary plugins create three recurring headaches:
-1. **Conflicting Acronym Collisions:** Different teams define the same acronym (`SLA`) with conflicting meanings in the same Confluence space without any automated collision detection.
-2. **External Database Dependencies:** Legacy Connect glossary plugins store your proprietary terminology and product definitions in external vendor databases outside Atlassian Cloud.
-3. **Clunky Navigation & No Bulk JSON Import/Export:** Standard Confluence tables lack instant A–Z letter bucket filtering, category taxonomy filtering, and 1-click JSON export.
-
-**Pure-Forge Space Glossary & Acronym Dictionary** runs **100% inside Atlassian Forge with zero external data egress** (**"Runs on Atlassian"**). It indexes space terminology into an interactive A–Z dictionary with taxonomy category filters, enforces a deterministic **Acronym & Canonical Term Collision Guard**, and blocks untrusted script or prototype pollution payloads.
+![Glossary & Taxonomy Studio](./assets/glossary_studio_prod_clean.png)
 
 ---
 
-## 2. Key Capabilities at a Glance
+## Quick start
 
-- **Interactive A–Z Bucket & Taxonomy Category Filtering:** Drill down across 75+ canonical engineering, security, SRE, and FinOps terms by letter (`A–Z`), category, or live substring search.
-- **Deterministic Acronym & Canonical Term Collision Guard (`Amber Refusal`):** Automatically detects and blocks duplicate term names or conflicting definitions claiming the same acronym (e.g., two different entries claiming `SLA`).
-- **Bulk JSON Dictionary Editor & 1-Click `.JSON` Export:** Maintain your glossary as version-controlled JSON directly inside the studio and export at any time.
-- **Fail-Closed XSS & Prototype Pollution Guard (`Red Fault`):** Rejects untrusted `<script>` tags, inline event handlers, and `__proto__` payloads before rendering or saving to Forge storage.
+1. **Confluence:** edit a page, type `/`, and choose **Pure-Forge Space Glossary & Acronym Dictionary**.
+   **Jira:** open an issue and open the **Pure-Forge Space Glossary & Acronym Dictionary** panel.
+2. Click **Edit**. To get started quickly, click **Load example**.
+3. Add terms with the form (**Term**, **Acronym**, **Category**, **Definition**, then **Add term to draft**), or edit the glossary as JSON in the editor.
+4. Click **Save**.
 
----
+**One glossary per space or project.** Every Glossary macro in the same Confluence space shows the same glossary, and every issue in a Jira project shares that project's glossary. A different space or project starts empty.
 
-## 3. Step-by-Step Quickstart Guide
+## Find terms
 
-1. **Insert the Glossary Studio:** Type `/Pure-Forge Space Glossary` on any Confluence page (or open the **Pure-Forge Space Glossary & Acronym Dictionary** panel on any Jira issue).
-2. **Search or Filter by Category & Letter:** Use **Instant Term / Acronym Search**, **Category Filter**, or **A–Z Bucket Filter** to locate definitions immediately.
-3. **Add or Import Terms:** Edit the JSON array in the **Bulk Glossary JSON Dictionary Editor** and click **Validate & Index Dictionary** to verify zero acronym collisions.
+Use the search box, the category list or the letter list (A–Z) to narrow the glossary. **Export JSON** downloads the whole glossary.
 
----
+## JSON format
 
-## 4. Security, Privacy & Support
+```json
+[
+  {
+    "term": "Service Level Objective",
+    "acronym": "SLO",
+    "category": "Reliability",
+    "definition": "The target level of reliability for a service.",
+    "ownerTeam": "SRE"
+  }
+]
+```
 
-- **Runs on Atlassian (Zero External Egress):** All glossary terms, acronym indexes, and taxonomy categories stay 100% inside your Atlassian Cloud environment.
-- **Need Help?** Visit our **[Support & SLA Page](./SUPPORT.md)** or open an issue on **[GitHub Issues](https://github.com/Pureforge-Studio/docs/issues)**.
+`term` and `definition` are required. `acronym`, `category` and `ownerTeam` are optional; `ownerTeam` can be set in the JSON editor.
+
+## Rules
+
+| Rule | Limit |
+| --- | --- |
+| Term | Required, up to 200 characters, unique in the glossary |
+| Acronym | Optional, up to 32 characters, unique in the glossary |
+| Category, owner team | Up to 100 characters each |
+| Definition | Required, up to 4,000 characters |
+| Terms shown at once | 300 (search or filter to find others) |
+
+Text is always shown as text, so HTML or scripts in a definition never run.
+
+## Who can save
+
+Anyone who can see the page or issue can read the glossary. Saving needs permission to edit the page or issue the glossary is on. If two people save at once, the second save is refused as out of date; reload and reapply your change. Unsaved drafts are kept in your browser.
+
+## Permissions
+
+| Scope | Why |
+| --- | --- |
+| `storage:app` | Save one glossary per space or project. |
+| `read:page:confluence`, `read:jira-work` | Check that you can edit the page or issue before saving. |
+
+## FAQ
+
+**Is our terminology stored outside Atlassian?** No. It is stored in Forge storage on your site.
+
+**What happens if the licence lapses?** The glossary still displays, read-only. Saving needs an active licence or trial.
