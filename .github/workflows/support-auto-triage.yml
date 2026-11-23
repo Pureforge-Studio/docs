@@ -1,0 +1,98 @@
+name: Automated Customer Support Triage & First Response
+
+# Runs automatically 24/7 whenever a customer opens a support ticket on
+# https://github.com/Pureforge-Studio/docs/issues (our official Marketplace
+# Support Tracker URL across all 7 apps).
+#
+# 1. Classifies which of the 7 Pure-Forge apps the customer is asking about.
+# 2. Applies triage labels (support-triage, app slug, severity hint).
+# 3. Posts an immediate, helpful first-response comment with links to the
+#    exact app guide and diagnostic steps so our initial response SLA is met
+#    within 60 seconds, 24/7/365.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  auto-triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Classify support ticket and post instant first-response
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          python3 - << 'PY'
+          import os, subprocess
+
+          repo = os.environ["REPO"]
+          num = os.environ["ISSUE_NUMBER"]
+          title = os.environ.get("ISSUE_TITLE", "")
+          body = os.environ.get("ISSUE_BODY", "")
+          author = os.environ.get("ISSUE_AUTHOR", "there")
+          combined = f"{title}\n{body}".lower()
+
+          apps = [
+              ("mermaid", "app:mermaid-studio", "Pure-Forge SVG Mermaid Studio", "MERMAID_STUDIO_GUIDE.md"),
+              ("markdown", "app:markdown-tree-studio", "Pure-Forge Markdown Tree Studio", "MARKDOWN_TREE_GUIDE.md"),
+              ("label", "app:bulk-label-governance", "Pure-Forge Bulk Label Governance", "LABEL_GOVERNANCE_GUIDE.md"),
+              ("webhook", "app:webhook-router", "Pure-Forge Inbound Webhook & Alert Router", "WEBHOOK_ROUTER_GUIDE.md"),
+              ("csv", "app:csv-json-table-studio", "Pure-Forge Zero-Egress CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
+              ("table", "app:csv-json-table-studio", "Pure-Forge Zero-Egress CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
+              ("glossary", "app:space-glossary-dictionary", "Pure-Forge Space Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
+              ("acronym", "app:space-glossary-dictionary", "Pure-Forge Space Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
+              ("seat", "app:inactive-seat-optimizer", "Pure-Forge Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
+              ("inactive", "app:inactive-seat-optimizer", "Pure-Forge Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
+          ]
+
+          matched_label = "support-triage"
+          matched_name = "PureForge-Studio Application Suite"
+          matched_guide = "README.md"
+          for kw, lbl, name, guide in apps:
+              if kw in combined:
+                  matched_label = lbl
+                  matched_name = name
+                  matched_guide = guide
+                  break
+
+          is_fault = any(k in combined for k in ("red fault", "fault", "crash", "security", "outage"))
+          sev_label = "severity:high" if is_fault else "severity:standard"
+
+          for lbl in ("support-triage", matched_label, sev_label):
+              subprocess.run(
+                  ["gh", "label", "create", lbl, "--repo", repo, "--color", "0E8A16", "--force"],
+                  check=False,
+                  capture_output=True,
+              )
+
+          subprocess.run(
+              ["gh", "issue", "edit", num, "--repo", repo, "--add-label", f"support-triage,{matched_label},{sev_label}"],
+              check=False,
+          )
+
+          reply = f"""Hi @{author},
+
+Thank you for contacting **PureForge-Studio Support**! Your ticket (`#{num}`) has been automatically logged and triaged for **{matched_name}** (`{sev_label}`).
+
+### Quick Self-Service Diagnostics While Our Team Reviews Your Ticket
+1. **Documentation & Troubleshooting Guide:** [{matched_name} Guide](https://github.com/Pureforge-Studio/docs/blob/main/{matched_guide})
+2. **If you see an `Amber Refusal` banner:** This indicates an expected validation or safety guard (such as an inactive Marketplace trial license, a payload exceeding batch/row caps, or an unconfirmed bulk operation checkbox). The banner text specifies the exact parameter or checkbox needed to proceed.
+3. **If you see a `Red Fault` banner:** Please reply with the exact banner text and whether you are running in **Confluence Cloud** or **Jira Cloud** (please do not paste sensitive company data or credentials).
+
+**SLA Target:** An engineer will review and follow up within **2–3 business days** (Monday–Friday, US Eastern Time) per our [Support SLA Policy](https://github.com/Pureforge-Studio/docs/blob/main/SUPPORT.md).
+"""
+          subprocess.run(
+              ["gh", "issue", "comment", num, "--repo", repo, "--body", reply],
+              check=True,
+          )
+          PY

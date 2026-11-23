@@ -12,20 +12,20 @@ Welcome to the official customer support portal for **PureForge-Studio** Atlassi
 
 ---
 
-## 1. Support Channels & Business Hours
-- **Support Ticket & Bug Tracker:** Open an issue on our **[GitHub Support Tracker](https://github.com/Pureforge-Studio/docs/issues)**
+## 1. Support Channels & Operating Schedule
+- **Primary Support Ticket & Bug Tracker (Instant Automated Triage):** Open an issue on our **[GitHub Support Tracker](https://github.com/Pureforge-Studio/docs/issues)** (automated triage and self-service diagnostics respond immediately 24/7; engineer review follows per the SLA table below).
 - **Support & Security Email:** `uo7vhd510@mozmail.com`
-- **Support Hours:** **Monday – Friday, 09:00 AM – 05:00 PM US Eastern Time (ET / UTC-5, EDT / UTC-4)**, excluding observed US Federal Holidays.
+- **Support Operating Days & Window:** **Monday – Friday (US Eastern Time / ET, UTC-5 / UTC-4)**, excluding observed US Federal Holidays.
 
 ---
 
-## 2. Response Time Targets (Service Level Agreement)
+## 2. Response Time Targets (Standard Support SLA)
 
-| Severity Level | Definition | Initial Response Target | Update / Resolution Cadence |
-| :--- | :--- | :---: | :--- |
-| **Severity 1 (Critical / Security)** | Application fails to load (`Red Fault Banner`) across all users in production or suspected security vulnerability. | **Within 8 Business Hours** (1 Business Day) | Daily status updates until hotfix deployment via Atlassian Forge production channel. |
-| **Severity 2 (Major Functional)** | A core feature (e.g., SVG export, Markdown import, label batch execution, or CSV export) fails or returns an unexpected error. | **Within 24 Business Hours** (1–2 Business Days) | Workaround or patch provided within 3 business days. |
-| **Severity 3 (General / Enhancement)** | General usage questions, documentation clarifications, or feature requests (`Amber Refusal` guidance). | **Within 48 Business Hours** (2 Business Days) | Triaged into product backlog with follow-up on release milestone. |
+| Severity Level | Definition | Automated Triage (GitHub Issues) | Engineer Response Target | Resolution / Follow-Up Target |
+| :--- | :--- | :---: | :---: | :--- |
+| **Severity 1 (Critical / Security)** | Application fails to load (`Red Fault Banner`) across all users in production or suspected security vulnerability. | **Immediate (< 5 Minutes)** | **Within 2 Business Days (48 Hours)** | Verified fix deployed via Atlassian Forge production channel as top backlog priority. |
+| **Severity 2 (Major Functional)** | A core feature (e.g., SVG export, Markdown import, label batch execution, or CSV export) returns an unexpected error. | **Immediate (< 5 Minutes)** | **Within 2–3 Business Days** | Workaround or patch scheduled in the next maintenance release. |
+| **Severity 3 (General / Enhancement)** | General usage questions, documentation clarifications, or feature requests (`Amber Refusal` guidance). | **Immediate (< 5 Minutes)** | **Within 3–5 Business Days** | Triaged into product backlog for upcoming minor releases. |
 
 ---
 

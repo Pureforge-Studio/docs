@@ -18,5 +18,5 @@ Every commit across the PureForge-Studio monorepo is gated by:
 
 ## 3. Reporting a Vulnerability
 If you believe you have discovered a security vulnerability in any **PureForge-Studio** application:
-1. Email **`uo7vhd510@mozmail.com`** with `[SECURITY]` in the subject line.
-2. We acknowledge receipt within **24 hours** and deploy verified critical security patches to the Atlassian Forge `production` environment in accordance with the Atlassian Marketplace Security Bug Fix Policy.
+1. Email **`uo7vhd510@mozmail.com`** with `[SECURITY]` in the subject line (or open a ticket on https://github.com/Pureforge-Studio/docs/issues without public exploit details).
+2. We acknowledge receipt within **2 business days (48 hours)** and deploy verified security patches to the Atlassian Forge `production` environment in accordance with the Atlassian Marketplace Security Bug Fix Policy.
