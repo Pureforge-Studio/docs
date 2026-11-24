@@ -1,18 +1,18 @@
-# JSON/CSV Table Studio — User Guide
+# CSV & JSON Table Studio — User Guide
 
 **Works in:** Confluence (macro) and Jira (issue panel)
-**Runs on Atlassian:** yes. Data is parsed in your browser and saved in Forge storage on your own site.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. Data is parsed in your browser and saved in Forge storage on your own site.
 
 Table Studio turns pasted or imported CSV or JSON into a sortable, filterable table, with Sum and Avg shown under numeric columns. Everyone who views the page or issue sees the same saved table.
 
-![JSON/CSV Table Studio](./assets/table_studio_prod_clean.png)
+![CSV & JSON Table Studio](./assets/table_studio_prod_clean.png)
 
 ---
 
 ## Quick start
 
-1. **Confluence:** edit a page, type `/`, and choose **Pure-Forge Zero-Egress CSV & JSON Table Studio**.
-   **Jira:** open an issue and open the **Pure-Forge Zero-Egress CSV & JSON Table Studio** panel.
+1. **Confluence:** edit a page, type `/`, and choose **CSV & JSON Table Studio**.
+   **Jira:** open an issue and open the **CSV & JSON Table Studio** panel.
 2. Click **Edit**, then choose a **Source format**:
    - **CSV (first row is the header)**
    - **JSON (list of flat objects)**: each object's keys become columns.

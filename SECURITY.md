@@ -5,7 +5,7 @@
 
 ## How the apps are built
 
-- **Runs on Atlassian.** All seven apps run on Atlassian Forge (`nodejs24.x`). They declare no outbound network access, so Forge blocks any call to an outside server.
+- **Hosted on Atlassian Forge.** All seven apps run on Atlassian Forge (`nodejs24.x`). They declare no outbound network access, so Forge blocks any call to an outside server.
 - **Data stays in your site.** App data lives only in Forge hosted storage on the site where the app is installed. We run no servers or databases of our own.
 - **No outside scripts.** Every script, style and library, including the bundled Mermaid renderer, ships inside the app. Nothing is loaded from a CDN.
 - **Least privilege.** Each app requests only the scopes listed in the [Privacy Policy](./PRIVACY.md), and acts with the current user's permissions wherever a user is present.

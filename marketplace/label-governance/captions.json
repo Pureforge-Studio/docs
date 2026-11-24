@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "See every label and how it's used",
+    "summary": "Page through all the labels on your Jira site, filter them, and count how many issues use each one.",
+    "caption": "Duplicate spellings of the same label, with issue counts."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Merge duplicates with a preview",
+    "summary": "Rename, merge or remove labels across every issue. Preview exactly how many issues will change first.",
+    "caption": "Merging three spellings of \"frontend\" into one, previewed before running."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "Run safely, undo if needed",
+    "summary": "Changes run in small batches you can stop at any time. A journal keeps recent runs so you can undo them.",
+    "caption": "A completed merge across 136 issues in the journal, ready to undo."
+  }
+]

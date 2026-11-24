@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "Sharp diagrams from plain text",
+    "summary": "Write Mermaid in the editor and see a crisp SVG diagram as you type, right inside Confluence or Jira.",
+    "caption": "An architecture flowchart written in Mermaid and rendered as a vector diagram."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Use the diagrams already on the page",
+    "summary": "Mermaid code blocks on the page are found automatically, in page order. Click one to edit and render it.",
+    "caption": "Two Mermaid code blocks found on the page, with the sequence diagram rendered."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "Light or dark, zoom and 4x export",
+    "summary": "Switch between light and dark themes, zoom from 25% to 400%, open full screen, and export a 4x PNG or an SVG.",
+    "caption": "A document review workflow in the light theme."
+  }
+]

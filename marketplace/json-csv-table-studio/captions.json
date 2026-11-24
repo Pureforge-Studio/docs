@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "Turn CSV or JSON into a live table",
+    "summary": "Paste or import CSV or JSON and get a clean table with Sum and Avg under every numeric column.",
+    "caption": "Monthly cloud costs by service, with totals and averages."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Filter and sort for everyone",
+    "summary": "Filter rows and sort any column, then save it as the view everyone on the page sees.",
+    "caption": "Only the Platform team's services, sorted by cost."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "Safe to export to spreadsheets",
+    "summary": "Edit the data beside a live preview. Exports refuse spreadsheet formulas, so a CSV can't run code in Excel.",
+    "caption": "Editing the CSV source with the preview updating alongside."
+  }
+]

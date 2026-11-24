@@ -5,7 +5,7 @@
 
 Our apps run entirely on Atlassian's Forge platform. They keep their data in your Atlassian site's app storage and send nothing to us or to anyone else. We cannot see your data.
 
-This policy covers the seven apps PureForge-Studio publishes on the Atlassian Marketplace: Mermaid Studio, Markdown Tree Studio, Label Governance, Webhook Router, JSON/CSV Table Studio, Glossary & Taxonomy Studio, and the License Seat Optimizer (Inactive User Auditor). It does not cover Atlassian's own products, which are governed by [Atlassian's Privacy Policy](https://www.atlassian.com/legal/privacy-policy). It also does not cover outside services you set up to send webhooks to Webhook Router.
+This policy covers the seven apps PureForge-Studio publishes on the Atlassian Marketplace: Mermaid Diagram Studio, Markdown Tree Studio, Label Governance, Webhook Router, CSV & JSON Table Studio, Glossary & Acronym Dictionary, and the License Seat Optimizer (Inactive User Auditor). It does not cover Atlassian's own products, which are governed by [Atlassian's Privacy Policy](https://www.atlassian.com/legal/privacy-policy). It also does not cover outside services you set up to send webhooks to Webhook Router.
 
 ## What each app stores
 
@@ -13,12 +13,12 @@ Each app keeps only what it needs, in the Forge app storage of the site where it
 
 | App | Stored in app storage | Kept only in your browser |
 | --- | --- | --- |
-| Mermaid Studio | The diagram source, its type and the time it was saved, for each macro or Jira issue. | Your unsaved draft and the last diagram you edited. |
+| Mermaid Diagram Studio | The diagram source, its type and the time it was saved, for each macro or Jira issue. | Your unsaved draft and the last diagram you edited. |
 | Markdown Tree Studio | The Markdown of each live macro. For imports and exports in progress: the target space and parent page, page titles, file paths and the IDs of pages created or queued. File contents pass through while a page is created or exported, but are not kept. | Your unsaved macro draft. |
 | Label Governance | A journal of the 25 most recent label runs: the operation, the labels involved, counts, status, and for each changed issue its ID, key and labels before and after (used for undo). | Your unsent operation draft. |
 | Webhook Router | Your settings (project, issue type, field paths, priority mapping, labels); the secret webhook token; the last 50 delivery results (time, outcome, issue key, a short reason); and hashed duplicate-check fingerprints, which expire after your dedupe window (at most 7 days). | Your unsaved settings draft. |
-| JSON/CSV Table Studio | The table data and its sort and filter, for each macro or Jira issue. | Your unsaved draft. |
-| Glossary & Taxonomy Studio | The glossary terms, acronyms, categories, definitions and owner-team text, for each Confluence space or Jira project. | Your unsaved draft. |
+| CSV & JSON Table Studio | The table data and its sort and filter, for each macro or Jira issue. | Your unsaved draft. |
+| Glossary & Acronym Dictionary | The glossary terms, acronyms, categories, definitions and owner-team text, for each Confluence space or Jira project. | Your unsaved draft. |
 | License Seat Optimizer | Your seat cost, dormancy threshold, and the totals of the last audit (user counts, dormant count, savings). The user list from your CSV is read in your browser and is not stored. | Your "never flag" list and column preferences. |
 
 **Webhook Router:** the app does not store a delivery's content. It does copy the summary, and up to 20,000 characters of the payload, into the Jira issue it creates. That issue then follows your Jira site's own permissions and retention.
@@ -28,7 +28,7 @@ Each app keeps only what it needs, in the Forge app storage of the site where it
 - No app stores Atlassian account IDs, names or email addresses. The License Seat Optimizer reads them from your CSV in the browser and keeps only totals.
 - No analytics, tracking, cookies or advertising identifiers.
 - No copies of your Jira issues or Confluence pages beyond what is listed above. The apps read them when you use a feature and keep only the items in the table.
-- No data is sent to us or to any third party. The apps declare no outbound network access ("Runs on Atlassian"), so Forge blocks them from contacting any outside server.
+- No data is sent to us or to any third party. The apps declare no outbound network access, so Forge blocks them from contacting any outside server.
 
 ## Where data lives and who can see it
 
@@ -51,12 +51,12 @@ Each app keeps only what it needs, in the Forge app storage of the site where it
 
 | App | Scopes |
 | --- | --- |
-| Mermaid Studio | `storage:app`, `read:page:confluence`, `read:jira-work` |
+| Mermaid Diagram Studio | `storage:app`, `read:page:confluence`, `read:jira-work` |
 | Markdown Tree Studio | `storage:app`, `read:page:confluence`, `write:page:confluence`, `read:space:confluence` |
 | Label Governance | `storage:app`, `read:jira-work`, `write:jira-work` |
 | Webhook Router | `storage:app`, `read:jira-work`, `write:jira-work` |
-| JSON/CSV Table Studio | `storage:app`, `read:page:confluence`, `read:jira-work` |
-| Glossary & Taxonomy Studio | `storage:app`, `read:page:confluence`, `read:jira-work` |
+| CSV & JSON Table Studio | `storage:app`, `read:page:confluence`, `read:jira-work` |
+| Glossary & Acronym Dictionary | `storage:app`, `read:page:confluence`, `read:jira-work` |
 | License Seat Optimizer | `storage:app` |
 
 Each app's user guide explains why it needs each scope.

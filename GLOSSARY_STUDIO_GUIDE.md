@@ -1,18 +1,18 @@
-# Glossary & Taxonomy Studio — User Guide
+# Glossary & Acronym Dictionary — User Guide
 
 **Works in:** Confluence (macro) and Jira (issue panel)
-**Runs on Atlassian:** yes. The glossary is saved in Forge storage on your own site.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. The glossary is saved in Forge storage on your own site.
 
 Glossary Studio keeps one shared A–Z glossary of terms and acronyms for each Confluence space and each Jira project. It refuses duplicate terms and clashing acronyms, so two teams can't publish different meanings for the same acronym.
 
-![Glossary & Taxonomy Studio](./assets/glossary_studio_prod_clean.png)
+![Glossary & Acronym Dictionary](./assets/glossary_studio_prod_clean.png)
 
 ---
 
 ## Quick start
 
-1. **Confluence:** edit a page, type `/`, and choose **Pure-Forge Space Glossary & Acronym Dictionary**.
-   **Jira:** open an issue and open the **Pure-Forge Space Glossary & Acronym Dictionary** panel.
+1. **Confluence:** edit a page, type `/`, and choose **Glossary & Acronym Dictionary**.
+   **Jira:** open an issue and open the **Glossary & Acronym Dictionary** panel.
 2. Click **Edit**. To get started quickly, click **Load example**.
 3. Add terms with the form (**Term**, **Acronym**, **Category**, **Definition**, then **Add term to draft**), or edit the glossary as JSON in the editor.
 4. Click **Save**.

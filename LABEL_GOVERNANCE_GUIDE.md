@@ -1,7 +1,7 @@
 # Label Governance — User Guide
 
 **Works in:** Jira (admin page)
-**Runs on Atlassian:** yes. Changes are made through Jira's own API with your permissions.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. Changes are made through Jira's own API with your permissions.
 
 Label Governance lets Jira admins rename, merge and remove labels across every issue that carries them, with a preview first and an undo afterwards.
 
