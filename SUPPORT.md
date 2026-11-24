@@ -31,10 +31,10 @@ Please don't include passwords, tokens (including your Webhook Router token), or
 
 ## App guides
 
-- [Mermaid Studio](./MERMAID_STUDIO_GUIDE.md)
+- [Mermaid Diagram Studio](./MERMAID_STUDIO_GUIDE.md)
 - [Markdown Tree Studio](./MARKDOWN_TREE_GUIDE.md)
 - [Label Governance](./LABEL_GOVERNANCE_GUIDE.md)
 - [Webhook Router](./WEBHOOK_ROUTER_GUIDE.md)
-- [JSON/CSV Table Studio](./CSV_JSON_TABLE_GUIDE.md)
-- [Glossary & Taxonomy Studio](./GLOSSARY_STUDIO_GUIDE.md)
+- [CSV & JSON Table Studio](./CSV_JSON_TABLE_GUIDE.md)
+- [Glossary & Acronym Dictionary](./GLOSSARY_STUDIO_GUIDE.md)
 - [License Seat Optimizer](./INACTIVE_SEAT_AUDITOR_GUIDE.md)

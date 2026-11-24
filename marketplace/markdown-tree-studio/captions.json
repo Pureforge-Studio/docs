@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "Import a folder as a page tree",
+    "summary": "Choose a folder of Markdown files and preview the Confluence page tree it will create, folders and all.",
+    "caption": "An engineering handbook folder previewed as nested Confluence pages."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Create every page in one go",
+    "summary": "Pages are created under the parent you choose, in the right order, and never overwrite existing pages.",
+    "caption": "The handbook imported: every page created in its place in the tree."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "Live Markdown on any page",
+    "summary": "Write Markdown in a macro and everyone sees it rendered, with tables, task lists and readable code blocks.",
+    "caption": "A release runbook written in Markdown and rendered on the page."
+  }
+]

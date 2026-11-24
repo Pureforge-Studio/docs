@@ -1,18 +1,18 @@
-# Mermaid Studio — User Guide
+# Mermaid Diagram Studio — User Guide
 
 **Works in:** Confluence (macro) and Jira (issue panel)
-**Runs on Atlassian:** yes. Diagrams render in your browser and are saved in Forge storage on your own site.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. Diagrams render in your browser and are saved in Forge storage on your own site.
 
-Mermaid Studio turns Mermaid text into sharp, zoomable SVG diagrams inside Confluence pages and Jira issues. It uses the official Mermaid library, bundled with the app, so nothing is fetched from the internet.
+Mermaid Diagram Studio turns Mermaid text into sharp, zoomable SVG diagrams inside Confluence pages and Jira issues. It uses the official Mermaid library, bundled with the app, so nothing is fetched from the internet.
 
-![Mermaid Studio](./assets/mermaid_prod_clean.png)
+![Mermaid Diagram Studio](./assets/mermaid_prod_clean.png)
 
 ---
 
 ## Quick start
 
-1. **Confluence:** edit a page, type `/`, and choose **Pure-Forge SVG Mermaid & Technical Diagram Studio**.
-   **Jira:** open an issue and open the **Pure-Forge SVG Mermaid & Technical Diagram Studio** panel.
+1. **Confluence:** edit a page, type `/`, and choose **Mermaid Diagram Studio**.
+   **Jira:** open an issue and open the **Mermaid Diagram Studio** panel.
 2. Pick a template, type Mermaid in the editor, or click a diagram the app found on the page (see below).
 3. Click **Save**. In Confluence, publish the page as usual.
 

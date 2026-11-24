@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "Works from your admin user export",
+    "summary": "Upload the user export from admin.atlassian.com. Columns are detected for you, and the file never leaves your browser.",
+    "caption": "An exported user list loaded, with columns and last-active dates detected."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "See who is dormant and what it costs",
+    "summary": "Find users inactive for longer than your threshold, never-active users included, with monthly and yearly savings.",
+    "caption": "Dormant users past 90 days and the estimated saving."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "Safe by design",
+    "summary": "A 14-day minimum threshold, a never-flag list for bots and people on leave, and nothing personal stored. It never deactivates anyone.",
+    "caption": "Settings with the never-flag list; only totals of the last audit are kept."
+  }
+]

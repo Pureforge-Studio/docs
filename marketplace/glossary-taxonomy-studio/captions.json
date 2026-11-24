@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "One glossary for the whole space",
+    "summary": "Keep terms and acronyms in one A–Z glossary that every page in the space or project shares.",
+    "caption": "A team glossary covering reliability, security, finance and delivery terms."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Find a term in seconds",
+    "summary": "Search, or filter by category and first letter, to find the definition you need.",
+    "caption": "Filtering the glossary to Security terms."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "No conflicting acronyms",
+    "summary": "Duplicate terms and clashing acronyms are refused, so two teams can't publish different meanings.",
+    "caption": "Adding a second meaning for \"SLO\" is refused and the clash is named."
+  }
+]

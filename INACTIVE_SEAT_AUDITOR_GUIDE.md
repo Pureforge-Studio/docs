@@ -1,7 +1,7 @@
 # License Seat Optimizer (Inactive User Auditor) — User Guide
 
 **Works in:** Jira (admin page) and Confluence (General configuration)
-**Runs on Atlassian:** yes. Your user list is read in your browser and never stored.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. Your user list is read in your browser and never stored.
 
 The Seat Optimizer finds users who haven't been active for a set number of days and estimates what removing their seats would save. It works from the user export that org admins download from admin.atlassian.com. **It never deactivates anyone:** you act on its list yourself in admin.atlassian.com.
 

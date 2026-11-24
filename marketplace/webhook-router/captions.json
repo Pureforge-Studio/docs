@@ -1,0 +1,23 @@
+[
+  {
+    "file": "highlight-1.png",
+    "cropped": "highlight-1-cropped.png",
+    "title": "Alerts become Jira issues",
+    "summary": "Point any monitoring or CI tool at your private webhook address. Map its fields to the issue summary, priority and labels.",
+    "caption": "Routing alerts into the Operations project as Incidents."
+  },
+  {
+    "file": "highlight-2.png",
+    "cropped": "highlight-2-cropped.png",
+    "title": "Preview before you go live",
+    "summary": "Paste a sample payload to see the exact issue it will create, then send a test event.",
+    "caption": "A sample alert previewed as a Highest-priority Incident."
+  },
+  {
+    "file": "highlight-3.png",
+    "cropped": "highlight-3-cropped.png",
+    "title": "No duplicate tickets from alert storms",
+    "summary": "Repeats of the same alert inside your dedupe window are skipped, and every delivery is logged.",
+    "caption": "Recent deliveries: new alerts created issues, a repeat was skipped, a bad payload was refused."
+  }
+]

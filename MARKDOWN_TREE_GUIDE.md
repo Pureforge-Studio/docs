@@ -1,7 +1,7 @@
 # Markdown Tree Studio — User Guide
 
 **Works in:** Confluence (page macro, and a space page for import and export)
-**Runs on Atlassian:** yes. Files are read in your browser and pages are created through Confluence's own API.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. Files are read in your browser and pages are created through Confluence's own API.
 
 Markdown Tree Studio does three things:
 
@@ -51,13 +51,14 @@ The `.zip` mirrors the page tree. A page with children becomes a folder with an 
 
 ## Live Markdown macro
 
-Edit a page, type `/`, and choose **Pure-Forge Bi-Directional Markdown Tree Importer, Exporter & Live Macro**. Click **Edit Markdown**, write or paste Markdown, then **Save**. Headings, lists, task lists, tables, links, code blocks (readable in dark mode) and images are supported. Each macro keeps its own content.
+Edit a page, type `/`, and choose **Markdown Tree Studio**. Click **Edit Markdown**, write or paste Markdown, then **Save**. Headings, lists, tables, links, code blocks (readable in dark mode) and images are supported. Task list items show as plain list items. Each macro keeps its own content.
 
 ## What converts, and how
 
 | Markdown | In Confluence |
 | --- | --- |
-| Headings, lists, task lists, tables, quotes, code blocks | Native Confluence formatting |
+| Headings, lists, tables, quotes, code blocks | Native Confluence formatting |
+| Task list items (`- [ ]`, `- [x]`) | Plain list items; the brackets stay as text |
 | Links | `http`, `https` and `mailto` links only; others become plain text |
 | Images | `https` images display; `http` images become links; relative paths such as `./img.png` become plain text, because the image files are not uploaded |
 | Raw HTML | Shown as text, never run |

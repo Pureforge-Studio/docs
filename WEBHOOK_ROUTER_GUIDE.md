@@ -1,7 +1,7 @@
 # Webhook Router — User Guide
 
 **Works in:** Jira (admin page, plus an inbound webhook address)
-**Runs on Atlassian:** yes. The webhook address is a Forge web trigger, and issues are created through Jira's own API.
+**Hosting:** runs entirely on Atlassian Forge, with no outbound network access. The webhook address is a Forge web trigger, and issues are created through Jira's own API.
 
 Webhook Router gives you a secret webhook address. Any tool that can send JSON over HTTPS — monitoring, CI, alerting or your own scripts — can post to it, and each event becomes a Jira issue. Repeats of the same alert are skipped instead of filling your backlog.
 

@@ -4,7 +4,7 @@ name: Automated Customer Support Triage & First Response
 # https://github.com/Pureforge-Studio/docs/issues (our official Marketplace
 # Support Tracker URL across all 7 apps).
 #
-# 1. Classifies which of the 7 Pure-Forge apps the customer is asking about.
+# 1. Classifies which of the 7 PureForge-Studio apps the customer is asking about.
 # 2. Applies triage labels (support-triage, app slug, severity hint).
 # 3. Posts an immediate, helpful first-response comment with links to the
 #    exact app guide and diagnostic steps so our initial response SLA is met
@@ -43,16 +43,16 @@ jobs:
           combined = f"{title}\n{body}".lower()
 
           apps = [
-              ("mermaid", "app:mermaid-studio", "Pure-Forge SVG Mermaid Studio", "MERMAID_STUDIO_GUIDE.md"),
-              ("markdown", "app:markdown-tree-studio", "Pure-Forge Markdown Tree Studio", "MARKDOWN_TREE_GUIDE.md"),
-              ("label", "app:bulk-label-governance", "Pure-Forge Bulk Label Governance", "LABEL_GOVERNANCE_GUIDE.md"),
-              ("webhook", "app:webhook-router", "Pure-Forge Inbound Webhook & Alert Router", "WEBHOOK_ROUTER_GUIDE.md"),
-              ("csv", "app:csv-json-table-studio", "Pure-Forge Zero-Egress CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
-              ("table", "app:csv-json-table-studio", "Pure-Forge Zero-Egress CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
-              ("glossary", "app:space-glossary-dictionary", "Pure-Forge Space Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
-              ("acronym", "app:space-glossary-dictionary", "Pure-Forge Space Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
-              ("seat", "app:inactive-seat-optimizer", "Pure-Forge Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
-              ("inactive", "app:inactive-seat-optimizer", "Pure-Forge Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
+              ("mermaid", "app:mermaid-studio", "Mermaid Diagram Studio", "MERMAID_STUDIO_GUIDE.md"),
+              ("markdown", "app:markdown-tree-studio", "Markdown Tree Studio", "MARKDOWN_TREE_GUIDE.md"),
+              ("label", "app:bulk-label-governance", "Bulk Label Governance", "LABEL_GOVERNANCE_GUIDE.md"),
+              ("webhook", "app:webhook-router", "Inbound Webhook & Alert Router", "WEBHOOK_ROUTER_GUIDE.md"),
+              ("csv", "app:csv-json-table-studio", "CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
+              ("table", "app:csv-json-table-studio", "CSV & JSON Table Studio", "CSV_JSON_TABLE_GUIDE.md"),
+              ("glossary", "app:space-glossary-dictionary", "Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
+              ("acronym", "app:space-glossary-dictionary", "Glossary & Acronym Dictionary", "GLOSSARY_STUDIO_GUIDE.md"),
+              ("seat", "app:inactive-seat-optimizer", "Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
+              ("inactive", "app:inactive-seat-optimizer", "Inactive User & License Seat Optimizer", "INACTIVE_SEAT_AUDITOR_GUIDE.md"),
           ]
 
           matched_label = "support-triage"
