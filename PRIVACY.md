@@ -70,4 +70,4 @@ Each app's user guide explains why it needs each scope.
 
 ## Contact
 
-PureForge-Studio, North Charleston, SC 29405, United States. Email: `uo7vhd510@mozmail.com`. Issues: https://github.com/Pureforge-Studio/docs/issues
+PureForge-Studio, North Charleston, SC 29405, United States. Email: `support@pureforgestudio.com` (legal inquiries: `legal@pureforgestudio.com`). Issues: https://github.com/Pureforge-Studio/docs/issues

@@ -38,4 +38,4 @@ These terms apply when you install or use any PureForge-Studio app published by 
 
 ## Contact
 
-PureForge-Studio, North Charleston, SC 29405, United States. Email: `uo7vhd510@mozmail.com`.
+PureForge-Studio, North Charleston, SC 29405, United States. Email: `support@pureforgestudio.com` (legal inquiries: `legal@pureforgestudio.com`).

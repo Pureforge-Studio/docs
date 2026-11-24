@@ -1,6 +1,6 @@
 # Security Policy — PureForge-Studio
 
-**Security contact:** `uo7vhd510@mozmail.com` (put `[SECURITY]` in the subject line)
+**Security contact:** `security@pureforgestudio.com` (put `[SECURITY]` in the subject line)
 **Privacy:** [PRIVACY.md](./PRIVACY.md)
 
 ## How the apps are built
@@ -22,7 +22,7 @@ Every change to the app code is checked before release:
 
 ## Reporting a vulnerability
 
-1. Email `uo7vhd510@mozmail.com` with `[SECURITY]` in the subject. Include the app, the steps to reproduce and the impact. Please don't open a public issue with exploit details.
+1. Email `security@pureforgestudio.com` with `[SECURITY]` in the subject. Include the app, the steps to reproduce and the impact. Please don't open a public issue with exploit details.
 2. We acknowledge reports within 2 business days.
 3. We fix confirmed issues following the [Atlassian Marketplace Security Bug Fix Policy](https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/), and tell you when the fix is released.
 

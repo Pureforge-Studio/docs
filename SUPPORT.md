@@ -3,7 +3,7 @@
 ## How to reach us
 
 - **Open an issue:** https://github.com/Pureforge-Studio/docs/issues. A bot replies straight away with a link to the right guide; a person follows up as shown below.
-- **Email:** `uo7vhd510@mozmail.com`. For security issues, see the [Security Policy](./SECURITY.md).
+- **Email:** `support@pureforgestudio.com`. For security issues, see the [Security Policy](./SECURITY.md) (`security@pureforgestudio.com`).
 - **Hours:** Monday to Friday, US Eastern Time, excluding US public holidays.
 
 ## Response targets
